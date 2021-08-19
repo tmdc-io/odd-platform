@@ -25,7 +25,9 @@ export const createThunk = <
     const result: ResType = await reqPromise;
     dispatch(action.success(getSuccessActionParams(result, params)));
   } catch (e) {
-    dispatch(action.failure({statusCode: e?.status, statusText: e?.statusText}));
+    dispatch(
+      action.failure({ statusCode: e?.status, statusText: e?.statusText })
+    );
   }
   return reqPromise;
 };

@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       fontSize: pxToRem(72),
       lineHeight: pxToRem(84),
       marginRight: theme.spacing(4),
-    }
+    },
   });
 
 export type StylesType = WithStyles<typeof styles>;

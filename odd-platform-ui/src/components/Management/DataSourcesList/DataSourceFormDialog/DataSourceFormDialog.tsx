@@ -9,7 +9,8 @@ import {
   Checkbox,
   InputLabel,
 } from '@material-ui/core';
-import { capitalize, reduce } from 'lodash';
+import capitalize from 'lodash/capitalize';
+import reduce from 'lodash/reduce';
 import {
   add,
   addSeconds,

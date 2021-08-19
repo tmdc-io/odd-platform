@@ -1,6 +1,7 @@
 import { Action, DataEntitiesState } from 'redux/interfaces';
 import { getType } from 'typesafe-actions';
-import { keyBy, omit } from 'lodash';
+import keyBy from 'lodash/keyBy';
+import omit from 'lodash/omit';
 import { DataEntityDetails } from 'generated-sources';
 import * as actions from 'redux/actions';
 
@@ -23,12 +24,12 @@ const updateDataEntity = (
 ): DataEntitiesState => {
   let unknownSourcesCount = 0;
   let unknownTargetsCount = 0;
-  const sourceList = payload.sourceList?.filter((source) => {
+  const sourceList = payload.sourceList?.filter(source => {
     if (source.externalName) return true;
     unknownSourcesCount += 1;
     return false;
   });
-  const targetsCount = payload.targetList?.filter((target) => {
+  const targetsCount = payload.targetList?.filter(target => {
     if (target.externalName) return true;
     unknownTargetsCount += 1;
     return false;

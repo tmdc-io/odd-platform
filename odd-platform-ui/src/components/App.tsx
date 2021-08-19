@@ -6,11 +6,21 @@ import AppLoadingSpinnerContainer from './shared/AppLoadingSpinner/AppLoadingSpi
 import AppToolbarContainer from './shared/AppToolbar/AppToolbarContainer';
 
 // Lazy loading components
-const DataEntityDetailsContainer = React.lazy(() => import('./DataEntityDetails/DataEntityDetailsContainer'));
-const ManagementContainer = React.lazy(() => import('./Management/ManagementContainer'));
-const SearchContainer = React.lazy(() => import('./Search/SearchContainer'));
-const OverviewContainer = React.lazy(() => import('./Overview/OverviewContainer'));
-const AlertsContainer = React.lazy(() => import('./Alerts/AlertsContainer'));
+const DataEntityDetailsContainer = React.lazy(
+  () => import('./DataEntityDetails/DataEntityDetailsContainer')
+);
+const ManagementContainer = React.lazy(
+  () => import('./Management/ManagementContainer')
+);
+const SearchContainer = React.lazy(
+  () => import('./Search/SearchContainer')
+);
+const OverviewContainer = React.lazy(
+  () => import('./Overview/OverviewContainer')
+);
+const AlertsContainer = React.lazy(
+  () => import('./Alerts/AlertsContainer')
+);
 
 interface AppProps {
   fetchDataEntitiesTypes: () => Promise<DataEntityTypeDictionary>;
@@ -23,9 +33,11 @@ const App: React.FC<AppProps> = ({ fetchDataEntitiesTypes }) => {
   return (
     <div className="App">
       <AppLoadingSpinnerContainer />
-      <AppToolbarContainer/>
+      <AppToolbarContainer />
       <div style={{ paddingTop: `${toolbarHeight}px` }}>
-        <React.Suspense fallback={<span>loading..</span>}> {/* TODO: replace with proper content placeholder */}
+        <React.Suspense fallback={<span>loading..</span>}>
+          {' '}
+          {/* TODO: replace with proper content placeholder */}
           <Switch>
             <Route exact path="/" component={OverviewContainer} />
             <Route path="/alerts/:viewType?" component={AlertsContainer} />

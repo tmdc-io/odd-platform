@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import { useDebouncedCallback } from 'use-debounce/lib';
-import { mapValues, values } from 'lodash';
+import mapValues from 'lodash/mapValues';
+import values from 'lodash/values';
 import {
   SearchApiUpdateSearchFacetsRequest,
   SearchApiGetSearchFacetListRequest,

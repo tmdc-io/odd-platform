@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import {
-  DataEntityTypeNameEnum,
-} from 'generated-sources';
+import { DataEntityTypeNameEnum } from 'generated-sources';
 import { DataEntityDetailsState } from 'redux/interfaces/dataentities';
 import { styles, StylesType } from './OverviewStatsStyles';
 import OverviewDatasetStats from './OverviewDatasetStats/OverviewDatasetStats';

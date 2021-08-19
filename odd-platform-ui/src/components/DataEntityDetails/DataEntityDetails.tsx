@@ -54,7 +54,7 @@ const DataEntityDetailsView: React.FC<DataEntityDetailsProps> = ({
   isDataset,
   fetchDataEntityDetails,
   dataEntityFetchingStatus,
-  dataEntityFetchingError
+  dataEntityFetchingError,
 }) => {
   const [tabs, setTabs] = React.useState<AppTabItem[]>([
     {
@@ -192,16 +192,16 @@ const DataEntityDetailsView: React.FC<DataEntityDetailsProps> = ({
           ) : null}
         </>
       ) : null}
-      {dataEntityFetchingStatus === 'fetching' ?
-        (<SkeletonWrapper
+      {dataEntityFetchingStatus === 'fetching' ? (
+        <SkeletonWrapper
           renderContent={({ randomSkeletonPercentWidth }) => (
             <DataEntityDetailsSkeleton
               width={randomSkeletonPercentWidth()}
             />
           )}
-        />)
-      : null}
-      {dataEntityFetchingStatus !== 'errorFetching' ?
+        />
+      ) : null}
+      {dataEntityFetchingStatus !== 'errorFetching' ? (
         <Switch>
           <Route
             exact
@@ -238,8 +238,11 @@ const DataEntityDetailsView: React.FC<DataEntityDetailsProps> = ({
             to="/dataentities/:dataEntityId/overview"
           />
         </Switch>
-      : null}
-      <AppErrorPage fetchStatus={dataEntityFetchingStatus} error={dataEntityFetchingError}/>
+      ) : null}
+      <AppErrorPage
+        fetchStatus={dataEntityFetchingStatus}
+        error={dataEntityFetchingError}
+      />
     </div>
   );
 };

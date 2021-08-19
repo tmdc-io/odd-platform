@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse, Typography, Grid, MenuItem } from '@material-ui/core';
 import cx from 'classnames';
-import { round } from 'lodash';
+import round from 'lodash/round';
 import {
   DataSetField,
   DataSetFieldTypeTypeEnum,

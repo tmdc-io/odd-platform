@@ -7,7 +7,8 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import { capitalize, values } from 'lodash';
+import capitalize from 'lodash/capitalize';
+import values from 'lodash/values';
 import { Autocomplete, createFilterOptions } from '@material-ui/lab';
 import { useDebouncedCallback } from 'use-debounce/lib';
 import { Controller, useFormContext } from 'react-hook-form';

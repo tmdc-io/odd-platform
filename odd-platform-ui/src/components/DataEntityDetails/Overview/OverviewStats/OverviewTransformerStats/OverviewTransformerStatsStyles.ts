@@ -31,8 +31,8 @@ export const styles = (theme: Theme) =>
       },
     },
     unknownCount: {
-      marginLeft: theme.spacing(0.5)
-    }
+      marginLeft: theme.spacing(0.5),
+    },
   });
 
 export type StylesType = WithStyles<typeof styles>;

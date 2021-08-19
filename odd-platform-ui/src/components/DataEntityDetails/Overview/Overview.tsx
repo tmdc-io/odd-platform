@@ -77,7 +77,7 @@ const Overview: React.FC<OverviewProps> = ({
           <OverviewSkeleton width={randomSkeletonPercentWidth()} />
         )}
       />
-    ): null}
+    ) : null}
   </>
 );
 

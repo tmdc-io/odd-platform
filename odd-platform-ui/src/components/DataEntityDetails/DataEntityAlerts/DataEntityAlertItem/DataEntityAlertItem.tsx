@@ -3,7 +3,7 @@ import { Grid, MenuItem, Typography, withStyles } from '@material-ui/core';
 import { Alert } from 'generated-sources';
 import cx from 'classnames';
 import { format } from 'date-fns';
-import { lowerCase } from 'lodash';
+import lowerCase from 'lodash/lowerCase';
 import AlertStatusItem from 'components/shared/AlertStatusItem/AlertStatusItem';
 import AppButton from 'components/shared/AppButton/AppButton';
 import KebabIcon from 'components/shared/Icons/KebabIcon';

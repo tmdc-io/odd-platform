@@ -1,10 +1,9 @@
 import { ThunkAction } from '@reduxjs/toolkit';
 import { ActionType } from 'typesafe-actions';
-import { Dictionary } from 'lodash';
+import { Dictionary } from 'lodash/index';
 import {
   DataSource,
   DataEntity,
-  DataEntityDetails,
   MetadataField,
   Tag,
   Label,

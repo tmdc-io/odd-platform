@@ -1,12 +1,10 @@
 import { createSelector } from 'reselect';
-import {
-  findKey,
-  omit,
-  values,
-  mapValues,
-  pickBy,
-  transform,
-} from 'lodash';
+import findKey from 'lodash/findKey';
+import omit from 'lodash/omit';
+import values from 'lodash/values';
+import mapValues from 'lodash/mapValues';
+import pickBy from 'lodash/pickBy';
+import transform from 'lodash/transform';
 import {
   RootState,
   OptionalFacetNames,
@@ -16,7 +14,10 @@ import {
   SearchType,
 } from 'redux/interfaces';
 import { DataEntityTypeNameEnum } from 'generated-sources';
-import { createFetchingSelector, createErrorSelector } from 'redux/selectors/loader-selectors';
+import {
+  createFetchingSelector,
+  createErrorSelector,
+} from 'redux/selectors/loader-selectors';
 
 const searchState = ({ search }: RootState): SearchState => search;
 

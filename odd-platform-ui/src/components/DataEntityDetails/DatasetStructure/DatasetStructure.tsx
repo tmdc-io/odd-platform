@@ -1,7 +1,8 @@
 import { Grid, Typography, Select } from '@material-ui/core';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { toPairs, round } from 'lodash';
+import toPairs from 'lodash/toPairs';
+import round from 'lodash/round';
 import {
   DataSetFieldTypeTypeEnum,
   DataSetStats,

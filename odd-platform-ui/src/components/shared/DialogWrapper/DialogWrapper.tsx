@@ -73,11 +73,13 @@ const DialogWrapper: React.FC<DialogWrapperProps> = ({
           scroll={scroll}
           aria-labelledby="max-width-dialog-title"
         >
-          <LinearProgress classes={{
-            root: classes.spinner,
-            colorPrimary: classes.spinnerColor,
-            barColorPrimary: classes.spinnerBarColor,
-          }} />
+          <LinearProgress
+            classes={{
+              root: classes.spinner,
+              colorPrimary: classes.spinnerColor,
+              barColorPrimary: classes.spinnerBarColor,
+            }}
+          />
           <DialogTitle
             className={classes.title}
             id="max-width-dialog-title"

@@ -1,4 +1,7 @@
-import { DataEntityTypeNameEnum, DataEntityDetails } from 'generated-sources';
+import {
+  DataEntityTypeNameEnum,
+  DataEntityDetails,
+} from 'generated-sources';
 
 export interface UpdateDataEntityParams {
   dataEntityId: number;

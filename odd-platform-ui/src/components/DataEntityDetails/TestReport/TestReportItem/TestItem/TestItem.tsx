@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, withStyles } from '@material-ui/core';
 import cx from 'classnames';
 import { formatDistanceStrict } from 'date-fns';
-import { values } from 'lodash';
+import values from 'lodash/values';
 import {
   DataQualityTestExpectation,
   DataQualityTestRunStatusEnum,

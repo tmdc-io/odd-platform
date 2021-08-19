@@ -9,7 +9,7 @@ import {
   getSearchQuery,
   getSearchMyObjects,
   getSearchFetchError,
-  getSearchFetchStatus
+  getSearchFetchStatus,
 } from 'redux/selectors/dataentitySearch.selectors';
 import {
   getDataEntitiesSearchDetails,
@@ -39,7 +39,7 @@ const mapStateToProps = (
   searchFilterParams: getSearchFiltersData(state),
   searchFiltersSynced: getSearchFiltersSynced(state),
   searchFetchStatus: getSearchFetchStatus(state),
-  searchError: getSearchFetchError(state)
+  searchError: getSearchFetchError(state),
 });
 
 const mapDispatchToProps = {

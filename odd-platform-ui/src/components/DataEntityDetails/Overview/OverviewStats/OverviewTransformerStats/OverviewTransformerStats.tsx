@@ -64,11 +64,12 @@ const OverviewTransformerStats: React.FC<OverviewTransformerStatsProps> = ({
             </Link>
           </AppButton>
         ))}
-        {unknownSourcesCount ? 
+        {unknownSourcesCount ? (
           <Typography variant="subtitle1" className={classes.unknownCount}>
-            {unknownSourcesCount} more source{unknownSourcesCount === 1 ? '' : 's'} unknown
+            {unknownSourcesCount} more source
+            {unknownSourcesCount === 1 ? '' : 's'} unknown
           </Typography>
-        : null}
+        ) : null}
       </Grid>
     </Grid>
     <Grid item container xs={6} className={classes.statsItem}>
@@ -101,11 +102,12 @@ const OverviewTransformerStats: React.FC<OverviewTransformerStatsProps> = ({
             </Link>
           </AppButton>
         ))}
-        {unknownTargetsCount ?
+        {unknownTargetsCount ? (
           <Typography variant="subtitle1" className={classes.unknownCount}>
-            {unknownTargetsCount} more target{unknownTargetsCount === 1 ? '' : 's'} unknown
+            {unknownTargetsCount} more target
+            {unknownTargetsCount === 1 ? '' : 's'} unknown
           </Typography>
-        : null}
+        ) : null}
       </Grid>
     </Grid>
   </Grid>

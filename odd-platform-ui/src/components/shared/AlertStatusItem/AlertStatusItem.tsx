@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 import cx from 'classnames';
-import { capitalize } from 'lodash';
+import capitalize from 'lodash/capitalize';
 import {
   styles,
   StylesType,

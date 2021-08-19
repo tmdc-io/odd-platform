@@ -16,7 +16,7 @@ import {
   createFilterOptions,
 } from '@material-ui/lab';
 import { useDebouncedCallback } from 'use-debounce';
-import { compact } from 'lodash';
+import compact from 'lodash/compact';
 import { FormProvider, useFieldArray, useForm } from 'react-hook-form';
 import DialogWrapper from 'components/shared/DialogWrapper/DialogWrapper';
 import TagItem from 'components/shared/TagItem/TagItem';
