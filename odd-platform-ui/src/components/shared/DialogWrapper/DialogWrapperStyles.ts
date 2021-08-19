@@ -1,4 +1,4 @@
-import { createStyles, Theme, WithStyles } from '@material-ui/core';
+import { createStyles, Theme, WithStyles, fade } from '@material-ui/core';
 
 export const styles = (theme: Theme) =>
   createStyles({
@@ -31,6 +31,12 @@ export const styles = (theme: Theme) =>
       flexBasis: '100%',
       height: '24px',
       margin: theme.spacing(1, 0),
+    },
+    spinnerColor: {
+      backgroundColor: fade('#0080FF', 0.9),
+    },
+    spinnerBarColor: {
+      backgroundColor: theme.palette.text.secondary,
     },
   });
 
