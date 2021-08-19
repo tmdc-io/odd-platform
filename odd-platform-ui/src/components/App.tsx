@@ -25,7 +25,7 @@ const App: React.FC<AppProps> = ({ fetchDataEntitiesTypes }) => {
       <AppLoadingSpinnerContainer />
       <AppToolbarContainer/>
       <div style={{ paddingTop: `${toolbarHeight}px` }}>
-        <React.Suspense fallback={<span>loading..</span>}> {/* TODO: replace with proper content placeholder*/}
+        <React.Suspense fallback={<span>loading..</span>}> {/* TODO: replace with proper content placeholder */}
           <Switch>
             <Route exact path="/" component={OverviewContainer} />
             <Route path="/alerts/:viewType?" component={AlertsContainer} />
