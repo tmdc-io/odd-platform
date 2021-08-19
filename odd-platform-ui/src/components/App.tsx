@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { DataEntityTypeDictionary } from 'generated-sources';
 import { toolbarHeight } from 'lib/constants';
-import AppLoadingSpinnerContainer from './shared/AppLoadingSpinner/AppLoadingSpinnerContainer';
 import AppToolbarContainer from './shared/AppToolbar/AppToolbarContainer';
 
 // Lazy loading components
@@ -32,7 +31,6 @@ const App: React.FC<AppProps> = ({ fetchDataEntitiesTypes }) => {
   }, []);
   return (
     <div className="App">
-      <AppLoadingSpinnerContainer />
       <AppToolbarContainer />
       <div style={{ paddingTop: `${toolbarHeight}px` }}>
         <React.Suspense fallback={<span>loading..</span>}>
