@@ -12,6 +12,7 @@ public class DisabledAuthSecurityConfiguration {
     @Bean
     public SecurityWebFilterChain securityWebFilterChainDisabled(final ServerHttpSecurity http) {
         return http
+            .headers().frameOptions().disable().and()
             .csrf().disable()
             .authorizeExchange()
             .anyExchange().permitAll()
