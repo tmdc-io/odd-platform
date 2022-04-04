@@ -23,7 +23,7 @@ import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.KAFKA_SERV
 import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.KAFKA_TOPIC;
 import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.MICROSERVICE;
 import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.ML_EXPERIMENT;
-import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.ML_MODEL_ARTIFACT;
+import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.ML_MODEL;
 import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.ML_MODEL_INSTANCE;
 import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.ML_MODEL_TRAINING;
 import static org.opendatadiscovery.oddplatform.dto.DataEntityTypeDto.TABLE;
@@ -36,7 +36,7 @@ public enum DataEntityClassDto {
     DATA_TRANSFORMER_RUN(3, JOB_RUN),
     DATA_QUALITY_TEST(4, JOB),
     DATA_QUALITY_TEST_RUN(5, JOB_RUN),
-    DATA_CONSUMER(6, Set.of(ML_MODEL_ARTIFACT, DASHBOARD)),
+    DATA_CONSUMER(6, Set.of(ML_MODEL, DASHBOARD)),
     DATA_INPUT(7, API_CALL),
     DATA_ENTITY_GROUP(8, Set.of(ML_EXPERIMENT, DAG, DATABASE_SERVICE, API_SERVICE, KAFKA_SERVICE));
 

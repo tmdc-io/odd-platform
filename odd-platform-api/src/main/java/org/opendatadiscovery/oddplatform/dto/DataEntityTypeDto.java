@@ -20,7 +20,7 @@ public enum DataEntityTypeDto {
     ML_MODEL_TRAINING(7),
     ML_MODEL_INSTANCE(8),
     DASHBOARD(9),
-    ML_MODEL_ARTIFACT(10),
+    ML_MODEL(10),
     VIEW(11),
     JOB_RUN(12),
     MICROSERVICE(13),
