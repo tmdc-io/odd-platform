@@ -372,7 +372,7 @@ components:
             - ML_MODEL_TRAINING
             - ML_MODEL_INSTANCE
             - DASHBOARD
-            - ML_MODEL_ARTIFACT
+            - ML_MODEL
             - VIEW
             - DAG
             - GRAPH_NODE
