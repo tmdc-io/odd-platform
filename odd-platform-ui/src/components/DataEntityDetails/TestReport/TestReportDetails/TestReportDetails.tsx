@@ -98,6 +98,20 @@ const TestReportDetails: React.FC<TestRunDetailsProps> = ({
             from="/dataentities/:dataEntityId/test-reports/:dataqatestId?"
             to="/dataentities/:dataEntityId/test-reports/:dataqatestId?/overview"
           />
+          <Route
+            exact
+            path="/embedded/dataentities/:dataEntityId/test-reports/:dataqatestId?/overview"
+            component={TestReportDetailsOverviewContainer}
+          />
+          <Route
+            exact
+            path="/embedded/dataentities/:dataEntityId/test-reports/:dataqatestId?/history"
+            component={TestReportDetailsHistoryContainer}
+          />
+          <Redirect
+            from="/embedded/dataentities/:dataEntityId/test-reports/:dataqatestId?"
+            to="/embedded/dataentities/:dataEntityId/test-reports/:dataqatestId?/overview"
+          />
         </Switch>
       </Grid>
     </Grid>

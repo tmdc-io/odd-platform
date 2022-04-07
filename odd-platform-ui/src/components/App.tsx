@@ -51,6 +51,15 @@ const App: React.FC<AppProps> = ({ fetchDataEntitiesTypes }) => {
               path="/dataentities/:dataEntityId/:viewType?"
               component={DataEntityDetailsContainer}
             />
+            <Route
+              path="/embedded/dataentities/:dataEntityId/:viewType?"
+              component={DataEntityDetailsContainer}
+            />
+            <Route
+              exact
+              path="/embedded/search/:searchId?"
+              component={SearchContainer}
+            />
           </Switch>
         </React.Suspense>
       </div>

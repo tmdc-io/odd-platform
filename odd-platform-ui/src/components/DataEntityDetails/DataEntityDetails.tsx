@@ -299,6 +299,50 @@ const DataEntityDetailsView: React.FC<DataEntityDetailsProps> = ({
               from="/dataentities/:dataEntityId"
               to="/dataentities/:dataEntityId/overview"
             />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/overview"
+              component={OverviewContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/structure/:versionId?"
+              component={DatasetStructureContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/lineage"
+              component={LineageContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/test-reports/:dataqatestId?/:reportDetailsViewType?"
+              component={TestReportContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/test-reports/:dataqatestId?/:reportDetailsViewType?"
+              component={TestReportDetailsContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/alerts"
+              component={DataEntityAlertsContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/history"
+              component={QualityTestHistoryContainer}
+            />
+            <Route
+              exact
+              path="/embedded/dataentities/:dataEntityId/linked-items"
+              component={LinkedItemsListContainer}
+            />
+            <Redirect
+              from="/embedded/dataentities/:dataEntityId"
+              to="/embedded/dataentities/:dataEntityId/overview"
+            />
           </Switch>
         </React.Suspense>
       ) : null}
