@@ -1,6 +1,6 @@
 import { Grid, Typography } from '@mui/material';
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { formatDistanceToNowStrict } from 'date-fns';
 import {
   dataEntityAlertsPath,
@@ -95,47 +95,56 @@ const DataEntityDetailsView: React.FC<DataEntityDetailsProps> = ({
 
   const [tabs, setTabs] = React.useState<AppTabItem[]>([]);
 
+  const location = useLocation();
+
+  const setLink = (link: string) => {
+    if (location.pathname.includes('embedded')) {
+      return `/embedded${link}`;
+    }
+    return link;
+  };
+
   React.useEffect(() => {
     setTabs([
       {
         name: 'Overview',
-        link: dataEntityOverviewPath(dataEntityId),
+        link: setLink(dataEntityOverviewPath(dataEntityId)),
         value: 'overview',
       },
       {
         name: 'Structure',
-        link: datasetStructurePath(dataEntityId),
+        link: setLink(datasetStructurePath(dataEntityId)),
         hidden: !isDataset,
         value: 'structure',
       },
       {
         name: 'Lineage',
-        link: dataEntityLineagePath(dataEntityId),
+        link: setLink(dataEntityLineagePath(dataEntityId)),
         hidden: isQualityTest,
         value: 'lineage',
       },
       {
         name: 'Test reports',
-        link: dataEntityTestReportPath(dataEntityId),
+        link: setLink(dataEntityTestReportPath(dataEntityId)),
         hidden: !isDataset,
         value: 'test-reports',
       },
       {
         name: 'History',
-        link: dataEntityHistoryPath(dataEntityId),
+        link: setLink(dataEntityHistoryPath(dataEntityId)),
         hidden: !isQualityTest,
         value: 'history',
       },
       {
         name: 'Alerts',
-        link: dataEntityAlertsPath(dataEntityId),
+        link: setLink(dataEntityAlertsPath(dataEntityId)),
         value: 'alerts',
         hint: openAlertsCount,
         hintType: 'alert',
       },
       {
         name: 'Linked items',
-        link: dataEntityLinkedItemsPath(dataEntityId),
+        link: setLink(dataEntityLinkedItemsPath(dataEntityId)),
         hidden: !dataEntityDetails?.hasChildren,
         value: 'linked-items',
       },

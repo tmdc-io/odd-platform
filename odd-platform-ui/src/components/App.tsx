@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { DataEntityTypeDictionary } from 'generated-sources';
 import { toolbarHeight } from 'lib/constants';
 import AppLoadingPage from 'components/shared/AppLoadingPage/AppLoadingPage';
@@ -30,9 +30,11 @@ const App: React.FC<AppProps> = ({ fetchDataEntitiesTypes }) => {
   useEffect(() => {
     fetchDataEntitiesTypes();
   }, []);
+  const location = useLocation();
+
   return (
     <div className="App">
-      <AppToolbarContainer />
+      {!location.pathname.includes('embedded') && <AppToolbarContainer />}
       <div style={{ paddingTop: `${toolbarHeight}px` }}>
         <React.Suspense fallback={<AppLoadingPage />}>
           <Switch>
