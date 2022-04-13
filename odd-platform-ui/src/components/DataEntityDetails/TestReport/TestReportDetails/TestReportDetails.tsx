@@ -7,7 +7,13 @@ import {
   testReportDetailsHistoryPath,
   testReportDetailsOverviewPath,
 } from 'lib/paths';
-import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import {
+  Link,
+  Redirect,
+  Route,
+  Switch,
+  useLocation,
+} from 'react-router-dom';
 import TestReportDetailsOverviewContainer from 'components/DataEntityDetails/TestReport/TestReportDetails/TestReportDetailsOverview/TestReportDetailsOverviewContainer';
 import TestReportDetailsHistoryContainer from 'components/DataEntityDetails/TestReport/TestReportDetails/TestReportDetailsHistory/TestReportDetailsHistoryContainer';
 import AppButton from 'components/shared/AppButton/AppButton';
@@ -27,17 +33,28 @@ const TestReportDetails: React.FC<TestRunDetailsProps> = ({
   qualityTest,
 }) => {
   const [tabs, setTabs] = React.useState<AppTabItem[]>([]);
+  const location = useLocation();
 
   React.useEffect(() => {
     setTabs([
       {
         name: 'Overview',
-        link: testReportDetailsOverviewPath(dataEntityId, dataQATestId),
+        link: location.pathname.includes('embedded')
+          ? `/embedded${testReportDetailsOverviewPath(
+              dataEntityId,
+              dataQATestId
+            )}`
+          : testReportDetailsOverviewPath(dataEntityId, dataQATestId),
         value: 'overview',
       },
       {
         name: 'History',
-        link: testReportDetailsHistoryPath(dataEntityId, dataQATestId),
+        link: location.pathname.includes('embedded')
+          ? `/embedded${testReportDetailsHistoryPath(
+              dataEntityId,
+              dataQATestId
+            )}`
+          : testReportDetailsHistoryPath(dataEntityId, dataQATestId),
         value: 'history',
       },
     ]);
@@ -71,7 +88,15 @@ const TestReportDetails: React.FC<TestRunDetailsProps> = ({
           </Typography>
         </AppTooltip>
         <AppButton size="small" color="tertiary" sx={{ ml: 2 }}>
-          <Link to={dataEntityDetailsPath(dataQATestId)}>Go to page</Link>
+          <Link
+            to={
+              location.pathname.includes('embedded')
+                ? `/embedded${dataEntityDetailsPath(dataQATestId)}`
+                : dataEntityDetailsPath(dataQATestId)
+            }
+          >
+            Go to page
+          </Link>
         </AppButton>
       </Grid>
       <Grid container wrap="wrap" justifyContent="center" sx={{ mt: 2 }}>

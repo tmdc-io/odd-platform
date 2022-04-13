@@ -3,7 +3,7 @@ import { HierarchyPointNode } from 'd3-hierarchy';
 import { select } from 'd3-selection';
 import { interpolateString } from 'd3-interpolate';
 import { DataEntityTypeLabelMap } from 'redux/interfaces/dataentities';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { dataEntityDetailsPath } from 'lib/paths';
 import { Point, TreeNodeDatum } from 'redux/interfaces/graph';
 import { DataEntityLineage } from 'generated-sources';
@@ -61,11 +61,17 @@ const AppGraphNode: React.FC<AppGraphNodeProps> = ({
   isStreamFetching,
   hasChildren,
 }) => {
+  const location = useLocation();
   const detailsLink =
+    // eslint-disable-next-line no-nested-ternary
     parent && data.externalName
-      ? dataEntityDetailsPath(
-          data.originalGroupId ? data.originalGroupId : data.id
-        )
+      ? location.pathname.includes('embedded')
+        ? `/embedded${dataEntityDetailsPath(
+            data.originalGroupId ? data.originalGroupId : data.id
+          )}`
+        : dataEntityDetailsPath(
+            data.originalGroupId ? data.originalGroupId : data.id
+          )
       : '#';
 
   let nodeRef: SVGGElement;

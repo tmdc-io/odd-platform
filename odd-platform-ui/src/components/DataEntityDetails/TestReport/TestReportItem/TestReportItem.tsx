@@ -9,7 +9,7 @@ import MinusIcon from 'components/shared/Icons/MinusIcon';
 import PlusIcon from 'components/shared/Icons/PlusIcon';
 import TestItem from 'components/DataEntityDetails/TestReport/TestReportItem/TestItem/TestItem';
 import { dataEntityTestPath } from 'lib/paths';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { DataSetQualityTestsStatusCount } from 'redux/interfaces';
 import AppIconButton from 'components/shared/AppIconButton/AppIconButton';
 import { TestReportBySuitNameHeader } from './TestReportItemStyles';
@@ -30,6 +30,7 @@ const TestReportItem: React.FC<TestReportItemProps> = ({
   dataQATestReport,
 }) => {
   const [open, setOpen] = React.useState<boolean>(false);
+  const location = useLocation();
 
   React.useEffect(() => {
     if (dataQATestList.length < 5) setOpen(true);
@@ -86,7 +87,14 @@ const TestReportItem: React.FC<TestReportItemProps> = ({
         {open && dataQATestList.length
           ? dataQATestList.map(dataQATest => (
               <Link
-                to={dataEntityTestPath(dataSetId, dataQATest.id)}
+                to={
+                  location.pathname.includes('embedded')
+                    ? `/embedded${dataEntityTestPath(
+                        dataSetId,
+                        dataQATest.id
+                      )}`
+                    : dataEntityTestPath(dataSetId, dataQATest.id)
+                }
                 key={dataQATest.id}
               >
                 <TestItem

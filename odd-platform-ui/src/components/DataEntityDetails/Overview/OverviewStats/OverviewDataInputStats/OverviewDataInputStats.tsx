@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import {
   DataEntityDetails,
   DataEntityTypeNameEnum,
@@ -22,6 +22,7 @@ const OverviewDataInputStats: React.FC<OverviewDataInputStatsProps> = ({
   dataEntityName,
 }) => {
   const displayedEntitiesNumber = 10;
+  const location = useLocation();
 
   return (
     <Grid container>
@@ -58,7 +59,13 @@ const OverviewDataInputStats: React.FC<OverviewDataInputStatsProps> = ({
               color="tertiary"
               onClick={() => {}}
             >
-              <Link to={dataEntityDetailsPath(output.id)}>
+              <Link
+                to={
+                  location.pathname.includes('embedded')
+                    ? `/embedded${dataEntityDetailsPath(output.id)}`
+                    : dataEntityDetailsPath(output.id)
+                }
+              >
                 {output.internalName || output.externalName}
               </Link>
             </AppButton>

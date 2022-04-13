@@ -10,6 +10,7 @@ import DownstreamIcon from 'components/shared/Icons/DownstreamIcon';
 import EntityTypeItem from 'components/shared/EntityTypeItem/EntityTypeItem';
 import AppButton from 'components/shared/AppButton/AppButton';
 import EntitiesListModal from 'components/shared/EntitiesListModal/EntitiesListModal';
+import { useLocation } from 'react-router-dom';
 import {
   StatIconContainer,
   EntityLink,
@@ -23,7 +24,9 @@ interface OverviewTransformerStatsProps {
   dataEntityName: string | undefined;
 }
 
-const OverviewTransformerStats: React.FC<OverviewTransformerStatsProps> = ({
+const OverviewTransformerStats: React.FC<
+  OverviewTransformerStatsProps
+> = ({
   sources,
   targets,
   unknownSourcesCount,
@@ -31,6 +34,7 @@ const OverviewTransformerStats: React.FC<OverviewTransformerStatsProps> = ({
   dataEntityName,
 }) => {
   const displayedEntitiesNumber = 10;
+  const location = useLocation();
 
   return (
     <Grid container>
@@ -73,7 +77,13 @@ const OverviewTransformerStats: React.FC<OverviewTransformerStatsProps> = ({
               color="tertiary"
               sx={{ my: 0.25 }}
             >
-              <EntityLink to={dataEntityDetailsPath(source.id)}>
+              <EntityLink
+                to={
+                  location.pathname.includes('embedded')
+                    ? `/embedded${dataEntityDetailsPath(source.id)}`
+                    : dataEntityDetailsPath(source.id)
+                }
+              >
                 {source.internalName || source.externalName}
               </EntityLink>
             </AppButton>
@@ -135,7 +145,13 @@ const OverviewTransformerStats: React.FC<OverviewTransformerStatsProps> = ({
               size="medium"
               color="tertiary"
             >
-              <EntityLink to={dataEntityDetailsPath(target.id)}>
+              <EntityLink
+                to={
+                  location.pathname.includes('embedded')
+                    ? `/embedded${dataEntityDetailsPath(target.id)}`
+                    : dataEntityDetailsPath(target.id)
+                }
+              >
                 {target.internalName || target.externalName}
               </EntityLink>
             </AppButton>
