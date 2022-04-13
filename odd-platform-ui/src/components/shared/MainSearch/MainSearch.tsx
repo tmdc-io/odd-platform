@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import {
   DataEntityRef,
   SearchApiGetSearchSuggestionsRequest,
@@ -39,15 +39,18 @@ const MainSearch: React.FC<AppSearchProps> = ({
   const [options, setOptions] = React.useState<Partial<DataEntityRef>[]>(
     []
   );
-  const [autocompleteOpen, setAutocompleteOpen] = React.useState<boolean>(
-    false
-  );
-  const [
-    loadingSuggestions,
-    setLoadingSuggestions,
-  ] = React.useState<boolean>(false);
+  const [autocompleteOpen, setAutocompleteOpen] =
+    React.useState<boolean>(false);
+  const [loadingSuggestions, setLoadingSuggestions] =
+    React.useState<boolean>(false);
 
   const history = useHistory();
+  const location = useLocation();
+
+  const pathToSearch = (id?: string) =>
+    location.pathname.includes('embedded')
+      ? `/embedded${searchPath(id)}`
+      : searchPath(id);
 
   const createSearch = () => {
     const searchQuery = {
@@ -57,11 +60,11 @@ const MainSearch: React.FC<AppSearchProps> = ({
     };
     createDataEntitiesSearch({ searchFormData: searchQuery }).then(
       search => {
-        const searchLink = searchPath(search.searchId);
+        const searchLink = pathToSearch(search.searchId);
         history.replace(searchLink);
       }
     );
-    history.push(searchPath());
+    history.push(pathToSearch());
   };
 
   const handleInputChange = (
@@ -107,6 +110,11 @@ const MainSearch: React.FC<AppSearchProps> = ({
     return typedOption.internalName || typedOption.externalName || '';
   };
 
+  const pathToEntity = (id: number) =>
+    location.pathname.includes('embedded')
+      ? `/embedded${dataEntityDetailsPath(id)}`
+      : dataEntityDetailsPath(id);
+
   const renderOption = (
     props: React.HTMLAttributes<HTMLLIElement>,
     option: unknown
@@ -115,7 +123,7 @@ const MainSearch: React.FC<AppSearchProps> = ({
     return (
       <li {...props}>
         <S.SuggestionItem
-          to={typedOption.id ? dataEntityDetailsPath(typedOption.id) : '#'}
+          to={typedOption.id ? pathToEntity(typedOption.id) : '#'}
         >
           <Typography variant="body1" sx={{ mr: 1 }}>
             {typedOption.internalName || typedOption.externalName}

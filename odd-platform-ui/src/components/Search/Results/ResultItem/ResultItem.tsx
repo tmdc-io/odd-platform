@@ -13,6 +13,7 @@ import {
 } from 'components/Search/Results/ResultsStyles';
 import ResultItemPreviewContainer from 'components/Search/Results/ResultItem/ResultItemPreview/ResultItemPreviewContainer';
 import AppTooltip from 'components/shared/AppTooltip/AppTooltip';
+import { useLocation } from 'react-router-dom';
 import { Container, ItemLink } from './ResultItemStyles';
 
 interface ResultItemProps {
@@ -26,7 +27,11 @@ const ResultItem: React.FC<ResultItemProps> = ({
   searchType,
   totals,
 }) => {
-  const detailsLink = dataEntityDetailsPath(searchResult.id);
+  const location = useLocation();
+  const detailsLink = location.pathname.includes('embedded')
+    ? `/embedded${dataEntityDetailsPath(searchResult.id)}`
+    : dataEntityDetailsPath(searchResult.id);
+
   const ResultItemPreview = React.useCallback(
     ({ open }) => (
       <ResultItemPreviewContainer
